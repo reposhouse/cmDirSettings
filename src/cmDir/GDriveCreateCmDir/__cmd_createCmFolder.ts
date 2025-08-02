@@ -1,4 +1,4 @@
-import { main } from "@/cmDir/googleWorkspaceCreateCmDir/main";
+import { main } from "@/cmDir/GDriveCreateCmDir/main";
 
 const targetYear = "";
 

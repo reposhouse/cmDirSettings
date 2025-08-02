@@ -18,7 +18,7 @@ type nul > "E:\share\AT21_ini.###"
 timeout 1
 
 set powershell="%SystemRoot%\system32\WindowsPowerShell\v1.0\powershell.exe"
-pushd "E:\Administration\code\checkDeliveredDir\src\ARCHITRENDdaily"
+pushd "E:\Administration\code\cmDirSettings\src\ARCHITRENDdaily"
 
 echo グループフォルダとロックファイルも削除
 start /wait %powershell% "del_groupFolder.js" > C:\codeLogs\ARCHITRENDdirList_taskScheduler.log
@@ -28,7 +28,7 @@ start /wait %powershell% "del_lockfile.js" >> C:\codeLogs\ARCHITRENDdirList_task
 timeout 1
 
 echo ローカルフォルダリストの作成
-ts-node "E:\Administration\code\checkDeliveredDir\src\ARCHITRENDdaily\ARCHITRENDdirList.ts" >> C:\codeLogs\ARCHITRENDdirList_taskScheduler.log
+tsx "ARCHITRENDdirList.ts" >> C:\codeLogs\ARCHITRENDdirList_taskScheduler.log
 
 endlocal
 

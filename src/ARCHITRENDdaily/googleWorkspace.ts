@@ -1,10 +1,5 @@
-import * as path from "node:path";
-import {
-	type Auth, // Namespace for auth related types
-	type drive_v3, // For every service client, there is an exported namespace
-	google, // The top level object used to access services
-} from "googleapis";
-import { isMainSV } from "./ARCHITRENDdirList";
+import type { drive_v3 } from "googleapis";
+import { get_GCP_API } from "@/resources/copy_GCP_API";
 
 export interface driveData {
 	name: string;
@@ -17,22 +12,15 @@ export interface mgdzData {
 	url: string;
 }
 
-// サービスアカウント認証の設定
-// TODO:汎用コードに切り替える
-const prefix = isMainSV ? "E:Administration/" : "X:/";
-const auth: Auth.GoogleAuth = new google.auth.GoogleAuth({
-	keyFile: path.join(
-		prefix,
-		"code",
-		"API","GoogleAPI",
-		"trapp-358710-09678f3e3acb.json",
-	),
-	scopes: ["https://www.googleapis.com/auth/drive.readonly"],
-});
-const drive: drive_v3.Drive = google.drive({ version: "v3", auth });
-
 // https://developers.google.com/drive/api/reference/rest/v3?hl=ja
+/**
+ * GDriveにある.mgdzファイルの一覧から
+ * それらのファイルがあるフォルダの一覧を取得
+ */
 export async function getGoogleWorkspaceList() {
+	// APIを取得
+	const drive = await get_GCP_API("drive");
+
 	const filesList: mgdzData[] = [];
 	let pageToken: string | null | undefined = null;
 	let i = 0; // logのためだけなのでなしでもよい
@@ -72,6 +60,9 @@ export async function getGoogleWorkspaceList() {
  * 共有ドライブの一覧を取得
  */
 export async function getSharedDriveName() {
+	// APIを取得
+	const drive = await get_GCP_API("drive");
+
 	// 共有ドライブの一覧objを取得
 	const drives: driveData[] = [];
 	let pageToken: null | string | undefined = null;

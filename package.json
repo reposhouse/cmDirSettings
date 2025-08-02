@@ -1,9 +1,7 @@
 {
 	"scripts": {
 		"check": "biome lint && tsc --noEmit",
-		"ncu_minor": "ncu -u --target minor",
-		"build_checkDeliveredDir": "tsc && nexe dist/checkDeliveredDir.js --target windows-x64-windows-x64-14.15.3 --output //main-sv/share/admin/checkDeliveredDir.exe",
-		"build_RecycleClean": "tsc && nexe dist/RecycleClean.js --target windows-x64-windows-x64-14.15.3 --output //main-sv/share/admin/RecycleClean.exe"
+		"ncu_minor": "ncu -u --target minor"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "^2.1.3",

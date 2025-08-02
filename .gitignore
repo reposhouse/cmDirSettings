@@ -1,13 +1,13 @@
 .DS_Store
 .Desktop
 node_modules
-SKYSEA/data
 log
 links
 .idea
 .vscode
 .env
 *.key
+dist
 
 # Log files
 *.log*

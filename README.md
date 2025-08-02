@@ -1,6 +1,6 @@
 **Google Drive** 自動フォルダ作成
 
-#### 3. `src/googleWorkspaceCreateCmDir/main.ts`
+#### `src/googleWorkspaceCreateCmDir/main.ts`
 
 **Google Drive フォルダの自動作成・管理**
 
