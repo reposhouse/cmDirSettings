@@ -1,0 +1,19 @@
+{
+	"scripts": {
+		"check": "biome lint && tsc --noEmit",
+		"ncu_minor": "ncu -u --target minor",
+		"build_checkDeliveredDir": "tsc && nexe dist/checkDeliveredDir.js --target windows-x64-windows-x64-14.15.3 --output //main-sv/share/admin/checkDeliveredDir.exe",
+		"build_RecycleClean": "tsc && nexe dist/RecycleClean.js --target windows-x64-windows-x64-14.15.3 --output //main-sv/share/admin/RecycleClean.exe"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^2.1.3",
+		"@types/node": "^24.1.0"
+	},
+	"dependencies": {
+		"axios": "^1.11.0",
+		"dotenv": "^17.2.1",
+		"googleapis": "^154.1.0",
+		"iconv-lite": "^0.6.3",
+		"xlsx": "https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz"
+	}
+}

@@ -1,0 +1,23 @@
+{
+	"compilerOptions": {
+		"module": "commonjs",
+		"target": "ESNext",
+		"lib": ["esnext", "dom"],
+		"experimentalDecorators": true,
+		"outDir": "dist",
+		"rootDir": "./src",
+		"strict": true,
+		"esModuleInterop": true,
+		"skipLibCheck": true,
+		"forceConsistentCasingInFileNames": true,
+		"resolveJsonModule": true,
+		"allowUnreachableCode": false,
+		"allowUnusedLabels": false,
+		"baseUrl": ".",
+		"paths": {
+			"@/*": ["./src/*"]
+		},
+	},
+	"include": ["src/**/*"], // `src` ディレクトリ内のファイルを全て対象にする
+	"exclude": ["node_modules", "dist"] // 除外するディレクトリ
+}

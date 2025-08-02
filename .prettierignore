@@ -1,0 +1,3 @@
+# フォーマットを無視する
+.claspignore
+.env
