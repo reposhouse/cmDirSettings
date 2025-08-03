@@ -3,7 +3,10 @@ import path from "node:path";
 import dotenv from "dotenv";
 
 export function envImport(envName: string, envPath?: string): string {
-	dotenv.config({ path: envPath ?? path.resolve(__dirname, "../.env"), quiet: true, });
+	dotenv.config({
+		path: envPath ?? path.resolve(__dirname, "../.env"),
+		quiet: true,
+	});
 	const env = process.env[envName];
 	if (env === undefined) {
 		throw new Error(`環境変数 ${envName} が定義されていません。`);
@@ -57,13 +60,15 @@ export function startEndLog_And_timer(resetAll: boolean = false): void {
 	} else {
 		const elapsed = now - timer.start;
 		timer.total += elapsed;
-
-		console.log(
-			`[ End ]  :  ${label} :  ⏱️  ${(elapsed / 1000).toFixed(3)}s / ` +
-				`${showTotalTime()}`,
-		);
-
 		timer.start = null;
+
+		const totalTime = showTotalTime();
+		console.log(
+			`[ End ]  :  ${label} :  ⏱️  ${(elapsed / 1000).toFixed(3)}s` +
+				(totalTime !== elapsed
+					? ` / ⏱️ 累計 : ${(totalTime / 1000).toFixed(3)}s`
+					: ""),
+		);
 	}
 }
 
@@ -83,12 +88,23 @@ function getCallerFunctionName(): string {
 /**
  * その時点の累計時間を表示
  */
-function showTotalTime(): string {
+function showTotalTime(): number {
 	const grandTotal = Object.values(timers).reduce((acc, timer) => {
 		if (timer.start !== null) {
 			return acc + (Date.now() - timer.start + timer.total);
 		}
 		return acc + timer.total;
 	}, 0);
-	return `⏱️ 累計 : ${(grandTotal / 1000).toFixed(3)}s`;
+	return grandTotal;
 }
+
+/**
+ * GAS合わせの疑似Utilities オブジェクト
+ */
+export const Utilities = {
+	// sleep関数：指定されたミリ秒だけ待機する
+	sleep: (ms: number): Promise<void> => {
+		console.log(`⏱️ sleep ${ms}ms`);
+		return new Promise((resolve) => setTimeout(resolve, ms));
+	},
+};

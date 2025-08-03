@@ -16,7 +16,7 @@ export async function get_GCP_API<T extends ApiName>(
 	api_name: T,
 ): Promise<ApiClientMap[T]> {
 	console.log("[ Start ]  :  GCP_API");
-	const GWS_envPath = path.join(PATHS.ADMIN_CODE, "API", "GoogleAPI");
+	const GWS_envPath = path.join(PATHS.ADMIN_CODE, "API", "src", "GoogleAPI");
 	const envPath = path.join(GWS_envPath, ".env");
 
 	const SERVICE_ACCOUNT_FILE: string = path.join(
@@ -25,7 +25,6 @@ export async function get_GCP_API<T extends ApiName>(
 	);
 
 	// スコープ設定
-	// TODO:スコープを絞るべき…？
 	const scopesMap: Record<ApiName, string[]> = {
 		sheets: ["https://www.googleapis.com/auth/spreadsheets"],
 		drive: ["https://www.googleapis.com/auth/drive"],
