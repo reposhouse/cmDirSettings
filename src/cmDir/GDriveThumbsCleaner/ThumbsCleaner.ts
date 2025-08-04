@@ -55,7 +55,7 @@ async function get_thumbs_list(): Promise<ThumbsListType[] | undefined> {
 		q: "name contains 'Thumbs.db' and mimeType != 'application/vnd.google-apps.folder' and trashed = false",
 		fields: "nextPageToken, files(id, name, teamDriveId)",
 		spaces: "drive",
-		pageSize: 200,
+		pageSize: 500,
 	});
 
 	startEndLog_And_timer();
