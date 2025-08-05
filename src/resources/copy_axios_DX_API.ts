@@ -13,8 +13,8 @@ import type {
 
 const isMainSV = os.hostname() === "main-SV";
 const cDX_envPath = isMainSV
-	? "E:/Administration/code/API/DXAPI" // サーバーの場合
-	: "X:/code/API/DXAPI"; // NOTE:XドライブにAdministration$を入れている場合
+	? "E:/Administration/code/API/src/DXAPI" // サーバーの場合
+	: "X:/code/API/src/DXAPI"; // NOTE:XドライブにAdministration$を入れている場合
 dotenv.config({ path: path.join(cDX_envPath, ".env"), quiet: true, });
 
 /** 環境変数が未定義の場合にエラーをスローするヘルパーメソッド */

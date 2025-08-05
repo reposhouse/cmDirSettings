@@ -9,7 +9,7 @@ set "PROJECT_DIR=E:\Administration\code\cmDirSettings"
 
 cd /d %~dp0
 
-set "LOG_DIR=%PROJECT_DIR%\log"
+set "LOG_DIR=E:\Administration\code\_logs"
 set "SCRIPT_PATH=%PROJECT_DIR%\src\cmDir\GDriveThumbsCleaner\%codeName%.ts"
 
 REM Create log directory

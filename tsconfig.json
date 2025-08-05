@@ -18,6 +18,11 @@
 			"@/*": ["./src/*"]
 		},
 	},
-	"include": ["src/**/*.ts"], // `src` ディレクトリ内のファイルを全て対象にする
-	"exclude": ["node_modules", "dist"] // 除外するディレクトリ
+		"include": [
+		"src/**/*.ts",
+		"src/**/*.d.ts",
+		"src/**/*.tsx",
+		"src/**/*.vue"
+	], // `src` ディレクトリ内のファイルを全て対象にする
+	"exclude": ["node_modules", "dist","out"] // 除外するディレクトリ
 }
